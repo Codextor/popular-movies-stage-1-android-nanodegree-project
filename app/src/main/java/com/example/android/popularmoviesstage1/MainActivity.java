@@ -4,9 +4,10 @@ import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -47,6 +48,26 @@ public class MainActivity extends AppCompatActivity {
         mLoadingIndicator = findViewById(R.id.pb_loading_indicator);
 
         loadMovieData();
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.main, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int menuItemThatWasSelected = item.getItemId();
+
+        if (menuItemThatWasSelected == R.id.action_most_popular) {
+            sortOrder = getString(R.string.most_popular_key);
+            loadMovieData();
+        } else if (menuItemThatWasSelected == R.id.action_top_rated) {
+            sortOrder = getString(R.string.top_rated_key);
+            loadMovieData();
+        }
+        return true;
     }
 
     private void loadMovieData() {

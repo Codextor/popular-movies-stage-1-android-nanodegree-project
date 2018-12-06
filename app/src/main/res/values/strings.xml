@@ -4,4 +4,6 @@
     <string name="top_rated_key">Top Rated</string>
     <string name="error_message">"An error has occurred. Please try again later."</string>
     <string name="api_key">"insert_api_key_here"</string>
+    <string name="action_most_popular">Sort by Most Popular</string>
+    <string name="action_top_rated">Sort by Top Rated</string>
 </resources>
