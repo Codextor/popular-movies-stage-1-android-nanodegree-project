@@ -17,11 +17,11 @@ public class JsonUtils {
      * @return Array of Strings describing movies
      * @throws JSONException If JSON data cannot be properly parsed
      */
-    public static String[] getMovieNamesFromJson(String jsonMovieResponse)
+    public static String[] getMoviePostersFromJson(String jsonMovieResponse)
             throws JSONException {
 
         /* Movie information. Each movie's info is an element of the "results" array */
-        final String OWM_RESULT = "results";
+        final String OWN_RESULT = "results";
 
         /* Title of the movie */
         final String POSTER_PATH = "poster_path";
@@ -52,7 +52,7 @@ public class JsonUtils {
             }
         }
 
-        JSONArray movieArray = movieJson.getJSONArray(OWM_RESULT);
+        JSONArray movieArray = movieJson.getJSONArray(OWN_RESULT);
 
         parsedMoviesData = new String[movieArray.length()];
 
@@ -60,7 +60,7 @@ public class JsonUtils {
 
             String poster_path;
 
-            /* Get the JSON object representing the day */
+            /* Get the JSON object representing the movie */
             JSONObject movieObject = movieArray.getJSONObject(i);
 
             poster_path = movieObject.getString(POSTER_PATH);

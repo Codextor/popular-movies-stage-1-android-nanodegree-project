@@ -112,7 +112,7 @@ public class MainActivity extends AppCompatActivity {
             try {
                 String jsonMovieResponse = NetworkUtils.getResponseFromHttpUrl(movieRequestUrl);
 
-                String[] simpleJsonMovieData = JsonUtils.getMovieNamesFromJson(jsonMovieResponse);
+                String[] simpleJsonMovieData = JsonUtils.getMoviePostersFromJson(jsonMovieResponse);
 
                 return simpleJsonMovieData;
 
