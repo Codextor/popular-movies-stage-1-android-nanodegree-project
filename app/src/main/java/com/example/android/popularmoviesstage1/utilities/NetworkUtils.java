@@ -3,6 +3,7 @@ package com.example.android.popularmoviesstage1.utilities;
 import android.content.Context;
 import android.net.Uri;
 
+import com.example.android.popularmoviesstage1.BuildConfig;
 import com.example.android.popularmoviesstage1.R;
 
 import java.io.IOException;
@@ -49,7 +50,7 @@ public final class NetworkUtils {
         /*
          * API key accessing The Movie Database api endpoints
          */
-        final String API_KEY = context.getResources().getString(R.string.api_key);
+        final String API_KEY = BuildConfig.THE_MOVIE_DATABASE_API_KEY;
 
         if (sortOrder.equals(context.getResources().getString(R.string.most_popular_key))) {
             builtUri = Uri.parse(BASE_URL).buildUpon().appendEncodedPath(POPULAR_MOVIES).appendQueryParameter(API_KEY_PARAM, API_KEY).build();
