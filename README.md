@@ -1,5 +1,14 @@
 # Popular Movies, Stage 1
 
+## The Movie Database API Key is required.
+
+In order for the Popular Movies Stage 1 app to function properly, an API key for themoviedb.org must be included with the build.
+
+We recommend you obtain a key, and include the unique key for the build by updating the following line in [USER_HOME]/.gradle/gradle.properties
+
+MyTheMovieDatabaseApiKey="insert_api_key_here"  
+Replace the string <insert_api_key_here> with your unique key.
+
 ## Project Overview
 Most of us can relate to kicking back on the couch and enjoying a movie with friends and family. In this project, you’ll build an app to allow users to discover the most popular movies playing. We will split the development of this app in two stages. First, let's talk about stage 1.
 
