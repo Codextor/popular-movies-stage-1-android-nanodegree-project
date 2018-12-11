@@ -1,9 +1,7 @@
 package com.example.android.popularmoviesstage1;
 
 import android.content.Context;
-import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,7 +13,14 @@ public class PosterAdapter extends RecyclerView.Adapter<PosterAdapter.PosterAdap
 
     private String[] mMovieData;
 
-    public PosterAdapter() {
+    final private ListItemClickListener mOnClickListener;
+
+    public interface ListItemClickListener {
+        void onListItemClick(int clickedItemIndex);
+    }
+
+    public PosterAdapter(ListItemClickListener listener) {
+        mOnClickListener = listener;
     }
 
     public class PosterAdapterViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
@@ -29,12 +34,8 @@ public class PosterAdapter extends RecyclerView.Adapter<PosterAdapter.PosterAdap
 
         @Override
         public void onClick(View v) {
-            Log.d("PosterAdapter", "onClick");
-
-            Context context = v.getContext();
-            Class destinationActivity = DetailActivity.class;
-            Intent intent = new Intent(context, destinationActivity);
-            context.startActivity(intent);
+            int clickedPosition = getAdapterPosition();
+            mOnClickListener.onListItemClick(clickedPosition);
         }
     }
 

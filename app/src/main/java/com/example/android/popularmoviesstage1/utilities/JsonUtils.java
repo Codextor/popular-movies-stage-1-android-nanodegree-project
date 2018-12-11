@@ -70,4 +70,19 @@ public class JsonUtils {
 
         return parsedMoviesData;
     }
+
+    public static JSONObject getMovieDetailsFromJson(String jsonMovieResponse, int position)
+            throws JSONException {
+        /* Movie information. Each movie's info is an element of the "results" array */
+        final String OWN_RESULT = "results";
+
+        JSONObject moviesJson = new JSONObject(jsonMovieResponse);
+
+        JSONArray moviesArray = moviesJson.getJSONArray(OWN_RESULT);
+
+        /* Get the JSON object representing the movie */
+        JSONObject movieObject = moviesArray.getJSONObject(position);
+
+        return movieObject;
+    }
 }

@@ -1,5 +1,7 @@
 package com.example.android.popularmoviesstage1;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -17,9 +19,11 @@ import com.example.android.popularmoviesstage1.utilities.NetworkUtils;
 
 import java.net.URL;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements PosterAdapter.ListItemClickListener {
 
     private static final String TAG = "MainActivity";
+    static String jsonMovieResponse;
+    static String[] simpleJsonMovieData;
 
     private RecyclerView mRecyclerView;
     private PosterAdapter mPosterAdapter;
@@ -39,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
         mRecyclerView.setLayoutManager(layoutManager);
         mRecyclerView.setHasFixedSize(true);
 
-        mPosterAdapter = new PosterAdapter();
+        mPosterAdapter = new PosterAdapter(this);
         mRecyclerView.setAdapter(mPosterAdapter);
 
         sortOrder = getString(R.string.most_popular_key);
@@ -110,9 +114,9 @@ public class MainActivity extends AppCompatActivity {
             Log.d(TAG, "Movie Request URL: " + movieRequestUrl);
 
             try {
-                String jsonMovieResponse = NetworkUtils.getResponseFromHttpUrl(movieRequestUrl);
+                jsonMovieResponse = NetworkUtils.getResponseFromHttpUrl(movieRequestUrl);
 
-                String[] simpleJsonMovieData = JsonUtils.getMoviePostersFromJson(jsonMovieResponse);
+                simpleJsonMovieData = JsonUtils.getMoviePostersFromJson(jsonMovieResponse);
 
                 return simpleJsonMovieData;
 
@@ -134,5 +138,18 @@ public class MainActivity extends AppCompatActivity {
             }
 
         }
+    }
+
+    @Override
+    public void onListItemClick(int clickedItemIndex) {
+        Log.d("PosterAdapter", "onClick of: " + clickedItemIndex);
+
+        Class destinationActivity = DetailActivity.class;
+
+        Context context = MainActivity.this;
+        Intent intent = new Intent(context, destinationActivity);
+        intent.putExtra(Intent.EXTRA_TEXT, clickedItemIndex);
+
+        startActivity(intent);
     }
 }
