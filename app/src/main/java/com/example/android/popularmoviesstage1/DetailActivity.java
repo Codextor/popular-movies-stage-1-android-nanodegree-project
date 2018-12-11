@@ -38,7 +38,7 @@ public class DetailActivity extends AppCompatActivity {
         DisplayMetrics displayMetrics = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
         int width = displayMetrics.widthPixels;
-        int posterWidth = (int)(width/2.4);
+        int posterWidth = (int) (width / 2.4);
 
         Intent intentThatStartedThisActivity = getIntent();
         if (intentThatStartedThisActivity.hasExtra(Intent.EXTRA_TEXT)) {
@@ -52,7 +52,7 @@ public class DetailActivity extends AppCompatActivity {
                 String posterForThisMovie = simpleJsonMovieData[position];
                 Picasso.get().load(posterForThisMovie).resize(posterWidth, 0).into(mPosterImage);
 
-                String releaseYear = movieDetails.getString("release_date").substring(0,4);
+                String releaseYear = movieDetails.getString("release_date").substring(0, 4);
                 mReleaseText.setText(releaseYear);
 
                 String rating = movieDetails.getString("vote_average") + "/10";

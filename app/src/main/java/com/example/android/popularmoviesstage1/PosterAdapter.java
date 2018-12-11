@@ -23,7 +23,7 @@ public class PosterAdapter extends RecyclerView.Adapter<PosterAdapter.PosterAdap
         mOnClickListener = listener;
     }
 
-    public class PosterAdapterViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
+    public class PosterAdapterViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         public final ImageView mPosterImageView;
 
         public PosterAdapterViewHolder(View view) {
@@ -40,7 +40,7 @@ public class PosterAdapter extends RecyclerView.Adapter<PosterAdapter.PosterAdap
     }
 
     @Override
-    public PosterAdapterViewHolder onCreateViewHolder( ViewGroup viewGroup, int i) {
+    public PosterAdapterViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
         Context context = viewGroup.getContext();
         int layoutIdForListItem = R.layout.poster_list_item;
         LayoutInflater inflater = LayoutInflater.from(context);
@@ -58,7 +58,7 @@ public class PosterAdapter extends RecyclerView.Adapter<PosterAdapter.PosterAdap
 
     @Override
     public int getItemCount() {
-        if(null == mMovieData) return 0;
+        if (null == mMovieData) return 0;
         return mMovieData.length;
     }
 

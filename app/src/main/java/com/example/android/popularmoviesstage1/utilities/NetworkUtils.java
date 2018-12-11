@@ -40,7 +40,7 @@ public final class NetworkUtils {
      * Builds the URL used to talk to the movie database server.
      *
      * @param sortOrder Flag to determine the sort order.
-     * @param context Context of the calling activity.
+     * @param context   Context of the calling activity.
      * @return The URL to use to query the movie database server.
      */
     public static URL buildUrl(String sortOrder, Context context) {

@@ -23,7 +23,7 @@ public class JsonUtils {
         /* Movie information. Each movie's info is an element of the "results" array */
         final String OWN_RESULT = "results";
 
-        /* Title of the movie */
+        /* Path for poster of the movie */
         final String POSTER_PATH = "poster_path";
         final String STATUS_CODE = "status_code";
 
@@ -73,7 +73,7 @@ public class JsonUtils {
 
     public static JSONObject getMovieDetailsFromJson(String jsonMovieResponse, int position)
             throws JSONException {
-        /* Movie information. Each movie's info is an element of the "results" array */
+
         final String OWN_RESULT = "results";
 
         JSONObject moviesJson = new JSONObject(jsonMovieResponse);
