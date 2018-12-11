@@ -17,23 +17,17 @@ import static com.example.android.popularmoviesstage1.utilities.JsonUtils.getMov
 
 public class DetailActivity extends AppCompatActivity {
 
-    private TextView mTitleText;
-    private ImageView mPosterImage;
-    private TextView mReleaseText;
-    private TextView mRatingtext;
-    private TextView mSynopsisText;
-    private JSONObject movieDetails;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
 
-        mTitleText = findViewById(R.id.tv_title);
-        mPosterImage = findViewById(R.id.iv_poster);
-        mReleaseText = findViewById(R.id.tv_release);
-        mRatingtext = findViewById(R.id.tv_rating);
-        mSynopsisText = findViewById(R.id.tv_synopsis);
+        TextView mTitleText = findViewById(R.id.tv_title);
+        ImageView mPosterImage = findViewById(R.id.iv_poster);
+        TextView mReleaseText = findViewById(R.id.tv_release);
+        TextView mRatingText = findViewById(R.id.tv_rating);
+        TextView mSynopsisText = findViewById(R.id.tv_synopsis);
+        JSONObject movieDetails;
 
         DisplayMetrics displayMetrics = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
@@ -56,7 +50,7 @@ public class DetailActivity extends AppCompatActivity {
                 mReleaseText.setText(releaseYear);
 
                 String rating = movieDetails.getString("vote_average") + "/10";
-                mRatingtext.setText(rating);
+                mRatingText.setText(rating);
 
                 mSynopsisText.setText(movieDetails.getString("overview"));
 
